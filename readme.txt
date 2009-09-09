@@ -2,7 +2,7 @@
 Contributors: fabio.mazzarino
 Requires at least: 2.8
 Tested up to: 2.8.4
-Stable tag: 0.1
+Stable tag: 0.2
 Tags: Post,Page,more,Adsense,banners
 
 In-Post Template plugin add additional content to posts and pages, inside the_content() data result.
@@ -23,3 +23,7 @@ It replaces a special mark added inside the post which can be the <!--more--> ma
 * Fully functional plugin
 * Static text configuration
 * Insertion after <!–more–> mark on posts and pages.
+
+= 0.2 = 
+* Works only on single post/page
+* Configurable behaviour when no mark found

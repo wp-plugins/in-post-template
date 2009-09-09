@@ -3,7 +3,7 @@
 Plugin Name: In-post Template
 Plugin URI: http://dosesdiarias.seucaminho.com
 Description: Add in-post content
-Version: 0.1
+Version: 0.2
 Author: Fabio A. Mazzarino <fabio.mazzarino@gmail.com>
 Author URI: http://dosesdiarias.seucaminho.com
 */
@@ -25,10 +25,28 @@ Author URI: http://dosesdiarias.seucaminho.com
 */
 
 
-add_filter('the_content', 'ipt_replate_tag', 0);
+add_filter('the_content', 'ipt_replace_tag', 0);
 
-function ipt_replate_tag($content) {
-	$content = preg_replace('/(\<span id\="more\-.+"\>)(\<\/span\>)/', '$1' . get_option('wp_ipt_content') . '$2', $content);
+function ipt_replace_tag($content) {
+	if (!is_single()) {
+		return $content;
+	}
+
+	if (preg_match('/\<span id\="more\-.+"\>\<\/span\>/', $content)) {
+		$content = preg_replace('/(\<span id\="more\-.+"\>)(\<\/span\>)/', '$1' . get_option('wp_ipt_content') . '$2', $content);
+			return $content;
+	} 
+
+	if (get_option('wp_ipt_nomark') == 'before') {
+		$content = get_option('wp_ipt_content') . $content;
+		return $content;
+	}
+
+	if (get_option('wp_ipt_nomark') == 'after') {
+		$content .= get_option('wp_ipt_content');
+		return $content;
+	}
+
 	return $content;
 }
 
@@ -40,16 +58,20 @@ function ipt_plugin_menu() {
 
 function ipt_register_settings() {
 	register_setting('wp_ipt_options', 'wp_ipt_content');
+	register_setting('wp_ipt_options', 'wp_ipt_nomark');
 }
-
 
 function ipt_plugin_options() {
 	if ($_POST['action'] == 'update') {
 		$message = "In-post Template Options Updated";
 
-		if (!update_option('wp_ipt_content', $_POST['wp_ipt_content'])) {
-			$message = "In-post Template Options Update Failed";
-		}
+		$content = $_POST['wp_ipt_content'];
+		$nomark = $_POST['wp_ipt_nomark'];
+
+		if (	!update_option('wp_ipt_content', $content)	||
+			!update_option('wp_ipt_nomark', $nomark)
+		)
+			$message = 'In-post Template Options Update Failed';
 		echo '<div id="message" class="updated fade"><p>'.$message.'.</p></div>';
 
 	}
