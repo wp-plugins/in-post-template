@@ -8,7 +8,9 @@ Tags: Post,Page,more,Adsense,banners
 In-Post Template plugin add additional content to posts and pages, inside the_content() data result.
 
 == Description ==
-In-Post Template plugin add additional content to posts and pages, inside the_content() data result. It can be used to add sitewide content like AdSense, banners or special identification on posts.
+In-Post Template plugin add additional content to posts and pages, inside the_content() data result. It can be used to add sitewide content like AdSense, banners and plugins.
+
+It accepts to insert html, java script, embedded content, php and even others plugins. Template tags are also accepted.
 
 It replaces a special mark added inside the post which can be the <!--more--> mark or any other configured.
 
