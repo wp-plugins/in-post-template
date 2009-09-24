@@ -36,9 +36,9 @@ function ipt_replace_tag($content) {
 		$content = preg_replace('/(\<span id\="more\-.+"\>)(\<\/span\>)/', '$1' . get_option('wp_ipt_content') . '$2', $content);
 
 	} else if (get_option('wp_ipt_nomark') == 'before') {
-		$content = get_option('wp_ipt_content') . $content;
+		$content = get_option('wp_ipt_alternate') . $content;
 	} else if (get_option('wp_ipt_nomark') == 'after') {
-		$content .= get_option('wp_ipt_content');
+		$content .= get_option('wp_ipt_alternate');
 	}
 
 	ob_start();
@@ -58,6 +58,7 @@ function ipt_plugin_menu() {
 function ipt_register_settings() {
 	register_setting('wp_ipt_options', 'wp_ipt_content');
 	register_setting('wp_ipt_options', 'wp_ipt_nomark');
+	register_setting('wp_ipt_options', 'wp_ipt_alternate');
 }
 
 function ipt_plugin_options() {
@@ -66,9 +67,11 @@ function ipt_plugin_options() {
 
 		$content = $_POST['wp_ipt_content'];
 		$nomark = $_POST['wp_ipt_nomark'];
+		$alternate = $_POST['wp_ipt_alternate'];
 
 		if (	!update_option('wp_ipt_content', $content)	||
-			!update_option('wp_ipt_nomark', $nomark)
+			!update_option('wp_ipt_nomark', $nomark)	||
+			!update_option('wp_ipt_alternate', $alternate)
 		)
 			$message = 'In-post Template Options Update Failed';
 		echo '<div id="message" class="updated fade"><p>'.$message.'.</p></div>';

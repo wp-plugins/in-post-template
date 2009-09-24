@@ -23,6 +23,13 @@
 			</select>
 		</td>
 	</tr>
+	<tr>
+		<th>Alternative Content (when no mark found)</th>
+		<td>
+			<textarea name="wp_ipt_alternate" cols="60" rows="10"><?php echo get_option('wp_ipt_alternate'); ?></textarea>
+		</td>
+			
+	</tr>
 	</tbody> </table>
 	<p class="submit">
 	<input type="submit" value="<?php _e('Save Changes'); ?>" />

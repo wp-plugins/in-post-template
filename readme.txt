@@ -2,7 +2,7 @@
 Contributors: fabio.mazzarino
 Requires at least: 2.8
 Tested up to: 2.8.4
-Stable tag: 0.3
+Stable tag: 0.4
 Tags: Post,Page,more,Adsense,banners
 
 In-Post Template plugin add additional content to posts and pages, inside the_content() data result.
@@ -30,3 +30,6 @@ It replaces a special mark added inside the post which can be the <!--more--> ma
 
 = 0.3 =
 * Accepts PHP code on insertable content as a Wordpress Template
+
+= 0.4 =
+* Added support to alternate content (when no more tag is found)
