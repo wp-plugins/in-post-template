@@ -2,7 +2,7 @@
 Contributors: fabio.mazzarino
 Requires at least: 2.8
 Tested up to: 2.8.4
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 Tags: Post,Page,more,Adsense,banners
 
 In-Post Template plugin add additional content to posts and pages, inside the_content() data result.
@@ -38,3 +38,6 @@ It replaces a special mark added inside the post which can be the <!--more--> ma
 
 = 0.4.1 =
 * Fixed a bug when no alternative template is defined
+
+= 0.4.2 = 
+* Fixed a bug on after post alternative template

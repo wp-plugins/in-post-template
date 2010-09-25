@@ -3,7 +3,7 @@
 Plugin Name: In-post Template
 Plugin URI: http://dosesdiarias.seucaminho.com
 Description: Add in-post content
-Version: 0.4.1
+Version: 0.4.2
 Author: Fabio A. Mazzarino <fabio.mazzarino@gmail.com>
 Author URI: http://dosesdiarias.seucaminho.com
 */
@@ -45,7 +45,7 @@ function ipt_replace_tag($content) {
 	} else if (get_option('wp_ipt_nomark') == 'before') {
 		$content = $iptAlternate . $content;
 	} else if (get_option('wp_ipt_nomark') == 'after') {
-		$content .= $iptAletrnate; 
+		$content .= $iptAlternate; 
 	}
 
 	ob_start();
